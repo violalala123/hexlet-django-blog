@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views import View
 
-def index(request):
-    return render(
-        request,
-        "articles/index.html",
-        context={'app_name': 'article'})
+class IndexView(View):
+    def get(self, request, tags, article_id, *args, **kwargs):
+        return HttpResponse(f"Статья номер {article_id}. Тег {tags}.")
